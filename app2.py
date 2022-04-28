@@ -18,6 +18,7 @@ def predict_label(img_path):
     i = image.load_img(img_path, target_size=(224, 224))
     i = image.img_to_array(i)/255.0
     i = i.reshape(1, 224, 224, 3)
+    predict_x = model.predict(i)
     classes_x = np.argmax(predict_x, axis=1)
     return dic[classes_x[0]]
 
