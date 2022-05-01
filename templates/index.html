@@ -15,6 +15,12 @@
     body {
       background-color: rgb(209, 209, 209);
     }
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
   </style>
   <body>
     <div class="container">
@@ -43,16 +49,16 @@
 
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success" align="center">
+              Submit
+            </button>
           </div>
         </div>
       </form>
+
       {% if prediction %}
-      <img src="{{img_path}}" height="400px" width="400px" />
-      <h2>
-        ผลการทาย :
-        <b>{{prediction}}</b>
-      </h2>
+      <img src="{{img_path}}" height="400px" width="400px" class="center" />
+      <h2 align="center">ผลการทาย : {{prediction}}</h2>
       {% if prediction2[1] == 'กลุ่มงูมีพิษ' %}
       <style>
         body {
