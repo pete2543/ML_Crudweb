@@ -13,12 +13,12 @@
   </head>
   <style>
     body {
-      background-color: rgb(70, 65, 59);
+      background-color: rgb(209, 209, 209);
     }
   </style>
   <body>
     <div class="container">
-      <h1 class="jumbotron bg-primary">Image Classfication</h1>
+      <h1 class="jumbotron bg-primary" align="center">งูอะไร?</h1>
       <br /><br />
       <form
         class="form-horizontal"
@@ -30,7 +30,7 @@
           <label class="control-label col-sm-2" for="pwd"
             >Upload Your Image :</label
           >
-          <div class="col-sm-10">
+          <div class="col-sm-5">
             <input
               type="file"
               class="form-control"
@@ -47,12 +47,31 @@
           </div>
         </div>
       </form>
-
       {% if prediction %}
       <img src="{{img_path}}" height="400px" width="400px" />
-      <h2>Your Prediction : <i> {{prediction}} </i></h2>
-
-      {% endif %}
+      <h2>
+        ผลการทาย :
+        <b>{{prediction}}</b>
+      </h2>
+      {% if prediction2[1] == 'กลุ่มงูมีพิษ' %}
+      <style>
+        body {
+          background-color: rgb(187, 33, 36);
+        }
+      </style>
+      {% endif %} {% if prediction2[1] == 'กลุ่มงูพิษอ่อน' %}
+      <style>
+        body {
+          background-color: rgb(240, 173, 78);
+        }
+      </style>
+      {% endif %} {% if prediction2[1] == 'กลุ่มงูไม่มีพิษ' %}
+      <style>
+        body {
+          background-color: rgb(34, 187, 51);
+        }
+      </style>
+      {% endif %} {% endif %}
     </div>
   </body>
 </html>
