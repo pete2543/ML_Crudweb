@@ -1,83 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Image Classification</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  </head>
-  <style>
-    body {
-      background-color: rgb(209, 209, 209);
-    }
-    .center {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 50%;
-    }
-  </style>
-  <body>
-    <div class="container">
-      <h1 class="jumbotron bg-primary" align="center">งูอะไร?</h1>
-      <br /><br />
-      <form
-        class="form-horizontal"
-        action="/submit"
-        method="post"
-        enctype="multipart/form-data"
-      >
-        <div class="form-group">
-          <label class="control-label col-sm-2" for="pwd"
-            >Upload Your Image :</label
-          >
-          <div class="col-sm-5">
-            <input
-              type="file"
-              class="form-control"
-              placeholder="Hours Studied"
-              name="my_image"
-              id="pwd"
-            />
-          </div>
-        </div>
 
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-success" align="center">
-              Submit
-            </button>
-          </div>
-        </div>
-      </form>
+<head>
+  <title>Image Classification</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</head>
+<style>
+  body {
+    background-color: rgb(171, 240, 240);
+  }
 
-      {% if prediction %}
-      <img src="{{img_path}}" height="400px" width="400px" class="center" />
-      <h2 align="center">ผลการทาย : {{prediction}}</h2>
-      {% if prediction2[1] == 'กลุ่มงูมีพิษ' %}
-      <style>
-        body {
-          background-color: rgb(187, 33, 36);
-        }
-      </style>
-      {% endif %} {% if prediction2[1] == 'กลุ่มงูพิษอ่อน' %}
-      <style>
-        body {
-          background-color: rgb(240, 173, 78);
-        }
-      </style>
-      {% endif %} {% if prediction2[1] == 'กลุ่มงูไม่มีพิษ' %}
-      <style>
-        body {
-          background-color: rgb(34, 187, 51);
-        }
-      </style>
-      {% endif %} {% endif %}
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+</style>
+
+<body class="body">
+  <div class="container">
+    <h1 class="jumbotron bg-secondary" align="center">📝มึงอยู่ทวีปอะไรวะเฮ้ยกุถามๆๆ!!📍</h1>
+    <br /><br />
+    <form class="form-horizontal" action="/submit" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="pwd">Upload Your Image :</label>
+        <div class="mb-3">
+        <!--  <input type="file" class="form-control" placeholder="Hours Studied" name="my_image" id="pwd" class="form-control"/> -->
+        <input class="form-control" type="file" name="my_image" id="pwd">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-success" align="center"> Submit</button>
+        </div>
+      </div>
+    </form>
+    {% if prediction %}
+    <img src="{{img_path}}" height="400px" width="400px" class="center" />
+    <h2 align="center">ทวีป : {{prediction}}</h2>
+    {% if prediction2[0] == 'African' %}
+    <div class="alert alert-warning" role="alert">
+      👨🏼‍🦰 บุคคลนี้เป็นคนทวีป:African 👨🏼‍🦰
     </div>
-  </body>
+    {% endif %} {% if prediction2[0] == 'Americas' %}
+    <div class="alert alert-primary" role="alert">
+      🕵🏼‍♀️ บุคคลนี้เป็นคนทวีป:Americas 🕵🏼‍♀️
+    </div>
+    {% endif %} {% if prediction2[0] == 'Asian' %}
+    <div class="alert alert-dark" role="alert">
+      💁🏼 บุคคลนี้เป็นคนทวีป:Asian 💁🏼
+    </div>
+    {% endif %} {% if prediction2[0] == 'Europe' %}
+    <div class="alert alert-danger" role="alert">
+      🧑🏼‍🎨 บุคคลนี้เป็นคนทวีป:Europe 🧑🏼‍🎨
+    </div>
+    {% endif %} {% endif %}
+  </div>
+</body>
+
 </html>
